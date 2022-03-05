@@ -19,6 +19,9 @@ module permutation (
 	// pi function
 	
 	
+	// chi function
+	
+	
 	// iota function
 	
 endmodule
