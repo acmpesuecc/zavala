@@ -30,5 +30,5 @@ module zavala (
 );
 
 	parameter miner_freq = 10000000; //frequency in hertz
-	parameter 
-	
+
+endmodule
