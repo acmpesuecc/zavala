@@ -43,8 +43,8 @@ module permutation (
     
     logic [63:0] c[4:0][4:0];
     
-	// theta function
-	generate    
+    // theta function
+    generate    
         for(y = 0; y < 5; y = y + 1) begin : L3
            for(x = 0; x < 5; x = x + 1) begin : L4
               assign c[x][y] = a[x][y] ^ b[`sub_1(x)] ^ `rot_left(b[`add_1(x)], 1);
@@ -54,8 +54,8 @@ module permutation (
     
     logic [63:0] d[4:0][4:0];
 	
-	// rho function
-	assign d[0][0] = c[0][0];
+   // rho function
+   assign d[0][0] = c[0][0];
    assign d[1][0] = `rot_left(c[1][0],  1);
    assign d[2][0] = `rot_left(c[2][0], 62);
    assign d[3][0] = `rot_left(c[3][0], 28);
@@ -69,7 +69,7 @@ module permutation (
    assign d[1][2] = `rot_left(c[1][2], 10);
    assign d[2][2] = `rot_left(c[2][2], 43);
    assign d[3][2] = `rot_left(c[3][2], 25);
-	assign d[4][2] = `rot_left(c[4][2], 39);
+   assign d[4][2] = `rot_left(c[4][2], 39);
    assign d[0][3] = `rot_left(c[0][3], 41);
    assign d[1][3] = `rot_left(c[1][3], 45);
    assign d[2][3] = `rot_left(c[2][3], 15);
@@ -78,13 +78,13 @@ module permutation (
    assign d[0][4] = `rot_left(c[0][4], 18);
    assign d[1][4] = `rot_left(c[1][4], 2);
    assign d[2][4] = `rot_left(c[2][4], 61);
-	assign d[3][4] = `rot_left(c[3][4], 56);
+   assign d[3][4] = `rot_left(c[3][4], 56);
    assign d[4][4] = `rot_left(c[4][4], 14);
     
    logic [63:0] e[4:0][4:0];
 	
-	// pi function
-	assign e[0][0] = d[0][0];
+   // pi function
+   assign e[0][0] = d[0][0];
    assign e[0][2] = d[1][0];
    assign e[0][4] = d[2][0];
    assign e[0][1] = d[3][0];
@@ -112,7 +112,7 @@ module permutation (
     
    logic [63:0] f[4:0][4:0];
 	
-	// chi function
+   // chi function
    generate    
        for(y = 0; y < 5; y = y + 1) begin : L5
           for(x = 0; x < 5; x = x + 1) begin : L6
@@ -123,8 +123,8 @@ module permutation (
     
    logic [63:0] g[4:0][4:0];	
     
-    // iota function
-	assign g[0][0][0]     = f[0][0][0] ^ round_const[0];
+   // iota function
+   assign g[0][0][0]     = f[0][0][0] ^ round_const[0];
    assign g[0][0][1]     = f[0][0][1] ^ round_const[1];
    assign g[0][0][2]     = f[0][0][2];
    assign g[0][0][3]     = f[0][0][3] ^ round_const[2];
@@ -146,7 +146,7 @@ module permutation (
        end
    endgenerate 
 	
-	generate
+   generate
         for(y = 0; y < 5; y = y + 1) begin : L99
            for(x = 0; x < 5; x = x + 1) begin : L100
               assign out[`high_bit(x, y) : `low_bit(x, y)] = g[x][y];
